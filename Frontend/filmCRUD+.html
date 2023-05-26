@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+	<title> Films CRUD+</title>
+	<meta charset="utf-8" />
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body onload="load()">
+	<div class="container">
+		<h1>Films CRUD &oplus;</h1>
+		
+		<div class="add-film-btn-container">
+			<div class="category">
+				<label class="cat">Category:&nbsp;</label>
+				<select class="cat" id="category" onclick="loadCategoryFilms()"></select>
+				<div id="category-buttons"></div><br /><br />
+			</div>
+			<button class="add-film-btn" onclick="openAddFilmModal()">Add Film</button>
+		</div>
+
+		
+
+		<div id="addFilmModal" class="modal">
+			<div class="modal-content">
+				<span class="close" onclick="closeAddFilmModal()">&times;</span>
+				<h2>Add Film</h2>
+				<form>
+					<label>Name:</label>
+					<input type="text" id="name" required/><br /><br />
+					<label>Category:</label>
+					<select id="categoryadd" required></select><br /><br />
+					<label>Release year:</label>
+					<input type="date" id="release_year" required/><br /><br />
+					<label>Duration:</label>
+					<input type="number" id="duration" required/><br /><br />
+					<label>Image URL:</label>
+					<input type="text" id="image"><br /><br />
+					<button onclick="addFilm()" type="button" id="addFilmButton">Add</button>
+				</form>
+ 
+			</div>
+		</div>
+
+		<!-- Update Modal -->
+
+		<div id="updateFilmModal" class="modal">
+			<div class="modal-content">
+			  <span onclick="closeUpdateFilmModal()" class="close">&times;</span>
+			  <h2>Update Film</h2>
+			  <form>
+				  <label>Name:</label>
+				  <input type="text" id="nameUpdate" required /><br /><br />
+				  <label>Category:</label>
+				  <select id="categoryUpdate"></select><br /><br />
+				  <label>Release year:</label>
+				  <input type="date" id="release_yearUpdate" required /><br /><br />
+				  <label>Duration:</label>
+				  <input type="number" id="durationUpdate" required /><br /><br />
+				  <label>Image:</label>
+				  <input type="text" id="imageUpdate" required /><br /><br />
+				<button type="button" id="updateFilmButton" onclick="updateFilm()">Update</button>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- Movie Cards -->
+		<div id="cardsContainer"></div>
+	</div>
+
+</body>
+
+
+</html>
